@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file scrollreveal.install
+ * Installation and update functions for the ScrollReveal
+ * Module
+ */
+
+/**
+ * Implementation of hook_uninstall().
+ * Only clears our variables, so a fresh installation can repopulate them.
+ */
+function scrollreveal_uninstall() {
+  // Settings.
+  variable_del('scrollreveal_settings');
+}

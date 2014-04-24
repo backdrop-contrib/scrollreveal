@@ -1,0 +1,5 @@
+name = Scroll Reveal
+description = Create a Scroll Reveal effects on any tagged element.
+core = 7.x
+
+configure = admin/config/user-interface/scrollreveal
