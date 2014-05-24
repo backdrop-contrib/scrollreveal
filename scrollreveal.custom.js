@@ -28,7 +28,16 @@
         };
         $(trigger.element).attr( "data-scroll-reveal", class_string.trim() );
       });
-      window.scrollReveal = new scrollReveal();
+      var config = {
+        after: Drupal.settings.scrollreveal.config.after + 's',
+        enter: Drupal.settings.scrollreveal.config.enter,
+        move: Drupal.settings.scrollreveal.config.move + 'px',
+        over: Drupal.settings.scrollreveal.config.over + 's',
+        easing: Drupal.settings.scrollreveal.config.easing,
+        viewportFactor: parseInt(Drupal.settings.scrollreveal.config.viewportFactor),
+        reset: (Drupal.settings.scrollreveal.config.reset === "true"),
+      };
+      window.scrollReveal = new scrollReveal( config );
     }
   }  
 

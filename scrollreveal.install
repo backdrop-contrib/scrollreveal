@@ -13,6 +13,15 @@
 function _scrollreveal_defaults() {
   $theme = variable_get('theme_default', NULL);;
   return array(
+    'config' => array(
+      'enter' => 'bottom',
+      'move' => 24,
+      'over' => 0.66,
+      'after' => 0,
+      'easing' => 'ease',
+      'reset' => 'false',
+      'viewportFactor' => 0.33,
+    ),
     'pages' => array(
       'visibility' => 0,
       'pages' => 'admin/*',
@@ -68,6 +77,28 @@ function scrollreveal_update_7001() {
     $settings['pages'] = array(
       'visibility' => 0,
       'pages' => 'admin/*',
+    );
+    $update = TRUE;
+  }
+  if ($update) variable_set('scrollreveal_settings', $settings);
+}
+
+/**
+ * Adds default options().
+ */
+
+function scrollreveal_update_7002() {
+  $settings = variable_get('scrollreveal_settings');
+  $update = FALSE;
+  if(!isset($settings['config'])) {
+    $settings['config'] = array(
+      'enter' => 'bottom',
+      'move' => 24,
+      'over' => 0.66,
+      'after' => 0,
+      'easing' => 'ease',
+      'reset' => 'false',
+      'viewportFactor' => 0.33,
     );
     $update = TRUE;
   }

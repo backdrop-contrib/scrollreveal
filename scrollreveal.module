@@ -87,6 +87,82 @@ function scrollreveal_admin($form, &$form_state) {
     '#markup' => t('<h3>Scroll Reveal Options</h3>
 <p>A simple way to create and maintain how elements fade in, triggered when they enter the viewport. An open-source experiment from <a href="https://twitter.com/julianlloyd">@JulianLloyd</a></p>'),
   );
+  $options['config'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Default Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $options['config']["enter"] = array(
+    '#type' => 'select',
+    '#title' => "Enter",
+    '#default_value' => 0,
+    '#description' => "Controls the vector origin of your reveal animation.",
+    '#options' => array(
+      'top' => t('Top'),
+      'bottom' => t('Bottom'),
+      'right' => t('Right'),
+      'left' => t('Left'),
+    ),
+    '#default_value' => isset($settings['config']["enter"]) ? $settings['config']["enter"] : 'bottom',
+  );
+  $options['config']["move"] = array(
+    '#type' => 'textfield',
+    '#title' => "Move",
+    '#description' => "The distance your revealing element travels in pixels.",
+    '#default_value' => 0,
+    '#size' => 6,
+    '#maxlength' => 4,
+    '#default_value' => isset($settings['config']["move"]) ? $settings['config']["move"] : 24,
+  );
+  $options['config']["over"] = array(
+    '#type' => 'textfield',
+    '#title' => "Over",
+    '#description' => "The duration of your reveal animation in seconds.",
+    '#default_value' => 0,
+    '#size' => 6,
+    '#maxlength' => 4,
+    '#default_value' => isset($settings['config']["over"]) ? $settings['config']["over"] : 0.66,
+  );
+  $options['config']["after"] = array(
+    '#type' => 'textfield',
+    '#title' => "After",
+    '#description' => "The duration before your reveal begins in seconds.",
+    '#default_value' => 0,
+    '#size' => 6,
+    '#maxlength' => 4,
+    '#default_value' => isset($settings['config']["after"]) ? $settings['config']["after"] : 0,
+  );
+  $options['config']['easing'] = array(
+    '#type' => 'select',
+    '#title' => t('Easing effect'),
+    '#options' => array(
+      'ease' => t('Ease'),
+      'ease-in' => t('Ease In'),
+      'ease-out' => t('Ease Out'),
+      'ease-in-out' => t('Ease In Out'),
+    ),
+    '#default_value' => isset($settings['config']["easing"]) ? $settings['config']["easing"] : 'ease',
+  );
+  $options['config']['reset'] = array(
+    '#type' => 'select',
+    '#title' => t('Reset effect'),
+    '#description' => t("Replay reveal animations every time elements enter the viewport."),
+    '#options' => array(
+      'false' => t('False'),
+      'true' => t('True'),
+    ),
+    '#default_value' => isset($settings['config']["reset"]) ? $settings['config']["reset"] : 'false',
+  );
+  $options['config']["viewportFactor"] = array(
+    '#type' => 'textfield',
+    '#title' => "Viewport",
+    '#description' => t("If set to 0, the element is considered in the viewport as soon as it enters.</br>If set to 1, the element is considered in the viewport when it is fully visible."),
+    '#size' => 6,
+    '#maxlength' => 4,
+    '#default_value' => isset($settings['config']["viewportFactor"]) ? $settings['config']["viewportFactor"] : 0.33,
+  );
+
   $options['triggers_fieldset'] = array(
     '#tree' => TRUE,
     '#title' => t("Target elements"),
@@ -229,7 +305,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#type' => 'fieldset',
     '#title' => t('Pages Visibility'),
     '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
+    '#collapsed' => TRUE,
   );
   $options['pages']['visibility'] = array(
     '#type' => 'radios',
@@ -251,7 +327,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#type' => 'fieldset',
     '#title' => t('Themes Visibility'),
     '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
+    '#collapsed' => TRUE,
   );
   $options['theme']['visibility'] = array(
     '#type' => 'radios',
