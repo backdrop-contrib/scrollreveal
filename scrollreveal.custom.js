@@ -26,7 +26,7 @@
         else if (trigger.wait != "0") {
           class_string += 'wait ' + trigger.wait + 's ';
         };
-        $(trigger.element).attr( "data-scroll-reveal", class_string.trim() );
+        $(trigger.element).attr( "data-sr", class_string.trim() );
       });
       var config = {
         after: Drupal.settings.scrollreveal.config.after + 's',

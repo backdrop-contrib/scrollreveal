@@ -419,12 +419,7 @@ function scrollreveal_libraries_info() {
     'name' => 'ScrollReveal',
     'vendor url' => 'https://github.com/julianlloyd/scrollReveal.js',
     'download url' => 'https://github.com/julianlloyd/scrollReveal.js',
-    'version arguments' => array(
-      'file' => 'scrollReveal.js',
-      // 3.x.x: Botstrap v3.0.3
-      'pattern' => '/scrollReveal.js\s+v?([0-9\.]+)/',
-      'lines' => 22,
-    ),
+    'version'=> "2.1.0",
     'files' => array(
       'js' => array(
         'scrollReveal.js',
