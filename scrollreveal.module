@@ -6,31 +6,43 @@
 */
 
 /**
+ * Implements hook_config_info().
+ */
+function scrollreveal_config_info() {
+  $prefixes['scrollreveal.settings'] = array(
+    'label' => t('scrollreveal settings'),
+    'group' => t('scrollreveal'),
+  );
+  return $prefixes;
+} 
+
+/**
  * Implements hook_init().
  */
 
 function scrollreveal_init() {
-  $module_path = drupal_get_path('module', 'scrollreveal');
-  $settings = variable_get('scrollreveal_settings');
+  $module_path = backdrop_get_path('module', 'scrollreveal');
+  $settings = config_get('scrollreveal.settings', 'scrollreveal_settings');
   if (scrollreveal_check_path($settings['pages']['visibility'], $settings['pages']['pages']) && scrollreveal_check_theme() && isset($settings['triggers_fieldset'])) {
-    drupal_add_js(array(
+    backdrop_add_js($module_path . '/js/scrollreveal.js');
+    backdrop_add_js($module_path . '/js/scrollreveal.custom.js');
+    backdrop_add_js(array(
       'scrollreveal' => $settings,
     ),
     'setting');
-    drupal_add_js($module_path . '/scrollreveal.custom.js');
-    libraries_load('scrollreveal');
+    // libraries_load('scrollreveal');
   }
 }
 
 
 function scrollreveal_check_path($visibility, $pages) {
-  $pages = drupal_strtolower($pages);
-  // Convert the Drupal path to lowercase
-  $path = drupal_strtolower(drupal_get_path_alias($_GET['q']));
+  $pages = backdrop_strtolower($pages);
+  // Convert the Backdrop path to lowercase
+  $path = backdrop_strtolower(backdrop_get_path_alias($_GET['q']));
   // Compare the lowercase internal and lowercase path alias (if any).
-  $page_match = drupal_match_path($path, $pages);
+  $page_match = backdrop_match_path($path, $pages);
   if ($path != $_GET['q']) {
-    $page_match = $page_match || drupal_match_path($_GET['q'], $pages);
+    $page_match = $page_match || backdrop_match_path($_GET['q'], $pages);
   }
   // When $block->visibility has a value of 0 (BLOCK_VISIBILITY_NOTLISTED),
   // the block is displayed on all pages except those listed in $block->pages.
@@ -42,7 +54,7 @@ function scrollreveal_check_path($visibility, $pages) {
 
 function scrollreveal_check_theme() {
   global $theme_key;
-  $settings = variable_get('scrollreveal_settings');
+  $settings = config_get('scrollreveal.settings', 'scrollreveal_settings');
   $visibility = $settings['theme']['visibility'];
   $theme_match = in_array($theme_key, $settings['theme']['themes']);
   $theme_match = !($visibility xor $theme_match);
@@ -57,7 +69,7 @@ function scrollreveal_menu() {
   $items['admin/config/user-interface/scrollreveal'] = array(
     'title' => 'Scroll Reveal',
     'description' => 'Add Scroll Reveal effect to any tagged element',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('scrollreveal_admin'),
     'access arguments' => array('administer site configuration'),
   );
@@ -72,7 +84,7 @@ function scrollreveal_admin($form, &$form_state) {
   // admin/* , node/add etc if user has overlay access.
   // Since the form builder is called after every AJAX request, we rebuild
   // the form based on $form_state.
-  $settings = variable_get('scrollreveal_settings');
+  $settings = config_get('scrollreveal.settings', 'scrollreveal_settings');
   $num_elements = isset($settings['triggers_fieldset']) ? count($settings['triggers_fieldset']) + 1 : 1;
   $form_state['triggers'] = $num_elements;
   $themes = list_themes();
@@ -377,14 +389,14 @@ function scrollreveal_delete_submit($form, &$form_state) {
  */
 function scrollreveal_admin_validate($form, &$form_state) {
   if ($form_state['clicked_button']['#value'] == "Delete element") {
-    $settings = variable_get('scrollreveal_settings');
+    $settings = config_get('scrollreveal.settings', 'scrollreveal_settings');
     $child = $form_state['clicked_button']['#parents'][2];
     unset($settings['triggers_fieldset'][$child]);
-    variable_set('scrollreveal_settings', $settings);
+    config_set('scrollreveal.settings', 'scrollreveal_settings', $settings);
     $form_state['rebuild'] = TRUE;
     $form_state['flag'] = 1;
-    drupal_set_message(t('The element have been deleted.'));
-    drupal_goto('admin/config/user-interface/scrollreveal');
+    backdrop_set_message(t('The element have been deleted.'));
+    backdrop_goto('admin/config/user-interface/scrollreveal');
   }
 }
 
@@ -401,62 +413,8 @@ function scrollreveal_admin_form_submit($form, &$form_state) {
     if (is_array($value) && isset($form_state['values']['array_filter'])) {
       $value = array_keys(array_filter($value));
     }
-    variable_set($key, $value);
+    config_set('scrollreveal.settings', $key, $value);
   }
 
-  drupal_set_message(t('The configuration options have been saved.'));
+  backdrop_set_message(t('The configuration options have been saved.'));
 }
-
-/**
- * Libraries implementation.
- */
-
-/**
- * Implements hook_libraries_info().
- */
-function scrollreveal_libraries_info() {
-  $libraries['scrollreveal'] = array(
-    'name' => 'ScrollReveal',
-    'vendor url' => 'https://github.com/julianlloyd/scrollReveal.js',
-    'download url' => 'https://github.com/julianlloyd/scrollReveal.js',
-    'version'=> "2.1.0",
-    'files' => array(
-      'js' => array(
-        'scrollReveal.js',
-      ),
-    ),
-  );
-
-  return $libraries;
-}
-
-/**
- * Check if the Sroll Reveal library is installed.
- *
- * @return
- *   A boolean indicating the installed status.
- */
-function scrollreveal_installed() {
-  if (($library = libraries_detect('scrollreveal')) && !empty($library['installed'])) {
-    return TRUE;
-  }
-  else {
-    return FALSE;
-  }
-}
-
-/**
- * Check if the Scroll Reveal library has been loaded.
- *
- * @return
- *   A boolean indicating the loaded status.
- */
-function scrollreveal_library_loaded() {
-  if (($library = libraries_load('scrollreveal')) && !empty($library['loaded'])) {
-    return TRUE;
-  }
-  else {
-    return FALSE;
-  }
-}
-

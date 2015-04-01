@@ -11,7 +11,7 @@
  * Default settings storage.
  */
 function _scrollreveal_defaults() {
-  $theme = variable_get('theme_default', NULL);;
+  $theme = config_get('system.core', 'theme_default');
   return array(
     'config' => array(
       'enter' => 'bottom',
@@ -40,7 +40,7 @@ function _scrollreveal_defaults() {
  * to variable_get(), which allows centralization of defaults.
  */
 function scrollreveal_install() {
-  variable_set('scrollreveal_settings', _scrollreveal_defaults());
+  config_set('scrollreveal.settings', 'scrollreveal_settings', _scrollreveal_defaults());
 }
 
 
@@ -57,50 +57,12 @@ function scrollreveal_uninstall() {
 /**
  * Implementation of hook_update().
  */
+function scrollreveal_update_1000() {
+  $config = config('scrollreveal.settings');
+  
+  $config->set('scrollreveal_settings', update_variable_get('scrollreveal_settings'));
+  $config->save();
 
-/**
- * Adds visibility options().
- */
-
-function scrollreveal_update_7001() {
-  $theme = variable_get('theme_default', NULL);
-  $settings = variable_get('scrollreveal_settings');
-  $update = FALSE;
-  if(!isset($settings['theme']['visibility'])) {
-    $settings['theme'] = array(
-      'visibility' => 1,
-      'themes' => array($theme => $theme),
-    );
-    $update = TRUE;
-  }
-  if(!isset($settings['theme']['visibility'])) {
-    $settings['pages'] = array(
-      'visibility' => 0,
-      'pages' => 'admin/*',
-    );
-    $update = TRUE;
-  }
-  if ($update) variable_set('scrollreveal_settings', $settings);
-}
-
-/**
- * Adds default options().
- */
-
-function scrollreveal_update_7002() {
-  $settings = variable_get('scrollreveal_settings');
-  $update = FALSE;
-  if(!isset($settings['config'])) {
-    $settings['config'] = array(
-      'enter' => 'bottom',
-      'move' => 24,
-      'over' => 0.66,
-      'after' => 0,
-      'easing' => 'ease',
-      'reset' => 'false',
-      'viewportFactor' => 0.33,
-    );
-    $update = TRUE;
-  }
-  if ($update) variable_set('scrollreveal_settings', $settings);
+  // Delete variables.
+  update_variable_del('scrollreveal_settings');
 }
