@@ -1,15 +1,20 @@
 SCROLL REVEAL
-===========
+===================
 
 CONTENTS OF THIS FILE
 ---------------------
 
  - Introduction
+ - Tested
+ - Known Issues
+ - Special Thanks
  - Requirements
  - Installation
- - Permissions
+ - Coming From Drupal?
  - Usage
- - Sponsors
+ - License
+ - Credits
+ - Maintainers
 
 INTRODUCTION
 ------------
@@ -21,18 +26,16 @@ You may have seen this technique in the "single page" websites that are often st
 TESTED
 -----
 
-@todo
 This module has been manually tested successfully creating several working JQuery scroll items in Backdrop.
 
 KNOWN ISSUES
 ---------------------
-@todo
+
 This module works as is by just installing it.
 
 This module bundles a third-party Javascript scrollReveal.js from <https://github.com/julianlloyd/scrollReveal.js>
 Copyright © 2015 Julian Lloyd
 The MIT License (MIT)
-Big thanks to Julian Lloyd for this functionality.
 
 Probably the preferred way to do this module is to use the Libraries module to bundle instead like this documentation:
 <https://www.drupal.org/project/scrollreveal>
@@ -41,15 +44,35 @@ If it bothers you that we don't use the Libraries module, file an issue and we c
 
 When official information on using third-party JQuery plugins becomes known, this will follow it.
 
+SPECIAL THANKS
+--------------
+
+Big thanks to Julian Lloyd for this functionality.
+
 REQUIREMENTS
 ------------
 
-@todo
+none
 
 INSTALLATION
 ------------
 
+Install this module using the official Backdrop CMS instructions at https://backdropcms.org/guide/modules
+
+
+COMING FROM DRUPAL?
+-------------------
+
+Nothing substantially different.
+
+PERMISSIONS
+------------
+
 @todo
+
+
+USAGE
+-----
 
 Download and enable Scroll Reveal Module.
 
@@ -65,31 +88,22 @@ Over: Is the duration of the animation
 
 After/Move: Is time before the reveal starts.
 
-PERMISSIONS
-------------
-
-@todo
-
-
-USAGE
------
-@todo
-
-
-License
+LICENSE
 -------
 
-This project is GPL v2 software. See the LICENSE.txt file in this directory for
-complete text.
+This project is GPL v2 software. See the LICENSE.txt file in this directory for complete text.
 
-Maintainers
+CREDITS
+-----------
+
+This module is based on the Scroll Reveal module for Drupal, originally written and maintained by a large number of contributors, including:
+
+- hatuhay <https://www.drupal.org/u/hatuhay>
+
+MAINTAINERS
 -----------
 
 - seeking
-
-Current Maintainers on Drupal:
-
-hatuhay <https://www.drupal.org/u/hatuhay>
 
 Ported to Backdrop by:
 
