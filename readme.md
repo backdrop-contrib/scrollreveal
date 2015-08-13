@@ -1,6 +1,10 @@
 SCROLL REVEAL
 ===================
 
+A simple way to create and maintain how elements fade in, triggered when they enter the viewport. An open-source experiment from @JulianLloyd.
+
+You may have seen this technique in the "single page" websites that are often step based marketing pages for an event, company services or a new product.
+
 CONTENTS OF THIS FILE
 ---------------------
 
@@ -15,13 +19,6 @@ CONTENTS OF THIS FILE
  - License
  - Credits
  - Maintainers
-
-INTRODUCTION
-------------
-
-A simple way to create and maintain how elements fade in, triggered when they enter the viewport. An open-source experiment from @JulianLloyd.
-
-You may have seen this technique in the "single page" websites that are often step based marketing pages for an event, company services or a new product.
 
 TESTED
 -----
