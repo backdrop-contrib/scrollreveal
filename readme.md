@@ -105,7 +105,7 @@ This module is based on the Scroll Reveal module for Drupal, originally written 
 MAINTAINERS
 -----------
 
-- seeking
+- laryn <https://github.com/laryn>
 
 Ported to Backdrop by:
 
