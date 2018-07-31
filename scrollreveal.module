@@ -14,7 +14,7 @@ function scrollreveal_config_info() {
     'group' => t('scrollreveal'),
   );
   return $prefixes;
-} 
+}
 
 /**
  * Implements hook_init().
@@ -114,7 +114,7 @@ function scrollreveal_admin($form, &$form_state) {
       'right' => t('Right'),
       'left' => t('Left'),
     ),
-    '#default_value' => isset($settings['config']['origin']) ? $settings['config']['origin'] : 'top',
+    '#default_value' => $settings['config']['origin'],
   );
   $options['config']['distance'] = array(
     '#type' => 'textfield',
@@ -122,21 +122,21 @@ function scrollreveal_admin($form, &$form_state) {
     '#default_value' => 0,
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => isset($settings['config']['distance']) ? $settings['config']['distance'] : 24,
+    '#default_value' => $settings['config']['distance'],
   );
   $options['config']['duration'] = array(
     '#type' => 'textfield',
     '#title' => "Duration (in ms)",
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => isset($settings['config']['duration']) ? $settings['config']['duration'] : 500,
+    '#default_value' => $settings['config']['duration'],
   );
   $options['config']['delay'] = array(
     '#type' => 'textfield',
     '#title' => "Delay (in ms)",
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => isset($settings['config']['delay']) ? $settings['config']['delay'] : 0,
+    '#default_value' => $settings['config']['delay'],
   );
   $options['config']['interval'] = array(
     '#type' => 'textfield',
@@ -144,7 +144,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => 'The interval is the time until the next element in the sequence begins its reveal, which is separate from the time until the element’s animation completes.',
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => isset($settings['config']['interval']) ? $settings['config']['interval'] : 0,
+    '#default_value' => $settings['config']['interval'],
   );
   $options['config']['rotate_x'] = array(
     '#type' => 'textfield',
@@ -152,21 +152,21 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => 'Starting angles in degrees, will transition from these values to 0 in all axes.',
     '#size' => 6,
     '#maxlength' => 3,
-    '#default_value' => isset($settings['config']['rotate_x']) ? $settings['config']['rotate_x'] : '0',
+    '#default_value' => $settings['config']['rotate_x'],
   );
   $options['config']['rotate_y'] = array(
     '#type' => 'textfield',
     '#title' => "Rotate Y",
     '#size' => 6,
     '#maxlength' => 3,
-    '#default_value' => isset($settings['config']['rotate_y']) ? $settings['config']['rotate_y'] : '0',
+    '#default_value' => $settings['config']['rotate_y'],
   );
   $options['config']['rotate_z'] = array(
     '#type' => 'textfield',
     '#title' => "Rotate Z",
     '#size' => 6,
     '#maxlength' => 3,
-    '#default_value' => isset($settings['config']['rotate_z']) ? $settings['config']['rotate_z'] : '0',
+    '#default_value' => $settings['config']['rotate_z'],
   );
   $options['config']['opacity'] = array(
     '#type' => 'textfield',
@@ -174,7 +174,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => 'Starting opacity value, before transitioning to the computed opacity.',
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => isset($settings['config']['opacity']) ? $settings['config']['opacity'] : 0,
+    '#default_value' => $settings['config']['opacity'],
   );
   $options['config']['scale'] = array(
     '#type' => 'textfield',
@@ -182,7 +182,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => 'Starting scale value, will transition from this value to 1.',
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => isset($settings['config']['scale']) ? $settings['config']['scale'] : 0.9,
+    '#default_value' => $settings['config']['scale'],
   );
   $options['config']['easing'] = array(
     '#type' => 'select',
@@ -193,7 +193,7 @@ function scrollreveal_admin($form, &$form_state) {
       'ease-out' => t('Ease Out'),
       'ease-in-out' => t('Ease In Out'),
     ),
-    '#default_value' => isset($settings['config']['easing']) ? $settings['config']['easing'] : 'ease',
+    '#default_value' => $settings['config']['easing'],
   );
   $options['config']['mobile'] = array(
     '#type' => 'select',
@@ -203,7 +203,7 @@ function scrollreveal_admin($form, &$form_state) {
       'false' => t('False'),
       'true' => t('True'),
     ),
-    '#default_value' => isset($settings['config']['mobile']) ? $settings['config']['mobile'] : 'true',
+    '#default_value' => $settings['config']['mobile'],
   );
   $options['config']['reset'] = array(
     '#type' => 'select',
@@ -213,7 +213,7 @@ function scrollreveal_admin($form, &$form_state) {
       'false' => t('False'),
       'true' => t('True'),
     ),
-    '#default_value' => isset($settings['config']['reset']) ? $settings['config']['reset'] : 'false',
+    '#default_value' => $settings['config']['reset'],
   );
   $options['config']['useDelay'] = array(
     '#type' => 'select',
@@ -223,7 +223,7 @@ function scrollreveal_admin($form, &$form_state) {
       'once' => t('Once - delay only the first time reveals occur'),
       'onload' => t('Onload - delay only for animations triggered by first load'),
     ),
-    '#default_value' => isset($settings['config']['useDelay']) ? $settings['config']['useDelay'] : 'always',
+    '#default_value' => $settings['config']['useDelay'],
   );
   $options['config']['viewFactor'] = array(
     '#type' => 'textfield',
@@ -231,7 +231,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => t("When should an element be considered in the viewport? The default value of 0.20 means 20% of an element must be visible for its reveal to occur."),
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => isset($settings['config']['viewFactor']) ? $settings['config']['viewFactor'] : 0.20,
+    '#default_value' => $settings['config']['viewFactor'],
   );
   $options['triggers_fieldset'] = array(
     '#tree' => TRUE,
@@ -248,7 +248,7 @@ function scrollreveal_admin($form, &$form_state) {
   foreach ($triggers as $trigger) {
     $options['triggers_fieldset']["trigger$i"] = array(
       '#type' => 'fieldset',
-      '#title' => isset($trigger['element']) ? $trigger['element'] : t('New element'),
+      '#title' => $trigger['element'],
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
       '#group' => 'triggers_fieldset'
@@ -263,32 +263,33 @@ function scrollreveal_admin($form, &$form_state) {
     $options['triggers_fieldset']["trigger$i"]['origin'] = array(
       '#type' => 'select',
       '#title' => "Origin",
-      '#default_value' => isset($trigger['origin']) ? $trigger['origin'] : $settings['config']['origin'],
+      '#default_value' => isset($trigger['origin']) ? $trigger['origin'] : '',
       '#options' => array(
         'top' => t('Top'),
         'bottom' => t('Bottom'),
         'right' => t('Right'),
         'left' => t('Left'),
       ),
+      '#empty_option' => t('- Default -'),
     );
     $options['triggers_fieldset']["trigger$i"]['distance'] = array(
       '#type' => 'textfield',
       '#title' => "Distance (in pixels)",
-      '#default_value' => isset($trigger['distance']) ? $trigger['distance'] : $settings['config']['distance'],
+      '#default_value' => isset($trigger['distance']) ? $trigger['distance'] : '',
       '#size' => 6,
       '#maxlength' => 4,
     );
     $options['triggers_fieldset']["trigger$i"]['duration'] = array(
       '#type' => 'textfield',
       '#title' => "Duration (in ms)",
-      '#default_value' => isset($trigger['duration']) ? $trigger['duration'] : $settings['config']['duration'],
+      '#default_value' => isset($trigger['duration']) ? $trigger['duration'] : '',
       '#size' => 6,
       '#maxlength' => 4,
     );
     $options['triggers_fieldset']["trigger$i"]['delay'] = array(
       '#type' => 'textfield',
       '#title' => "Delay (in ms)",
-      '#default_value' => isset($trigger['delay']) ? $trigger['delay'] : $settings['config']['delay'],
+      '#default_value' => isset($trigger['delay']) ? $trigger['delay'] : '',
       '#size' => 6,
       '#maxlength' => 4,
     );
@@ -298,7 +299,7 @@ function scrollreveal_admin($form, &$form_state) {
       '#description' => 'The interval is the time until the next element in the sequence begins its reveal, which is separate from the time until the element’s animation completes.',
       '#size' => 6,
       '#maxlength' => 4,
-      '#default_value' => isset($trigger['interval']) ? $trigger['interval'] : $settings['config']['interval'],
+      '#default_value' => isset($trigger['interval']) ? $trigger['interval'] : '',
     );
     $options['triggers_fieldset']["trigger$i"]['rotate_x'] = array(
       '#type' => 'textfield',
@@ -306,21 +307,21 @@ function scrollreveal_admin($form, &$form_state) {
       '#description' => 'Starting angles in degrees, will transition from these values to 0 in all axes.',
       '#size' => 6,
       '#maxlength' => 26,
-      '#default_value' => isset($trigger['rotate_x']) ? $trigger['rotate_x'] : $settings['config']['rotate_x'],
+      '#default_value' => isset($trigger['rotate_x']) ? $trigger['rotate_x'] : '',
     );
     $options['triggers_fieldset']["trigger$i"]['rotate_y'] = array(
       '#type' => 'textfield',
       '#title' => "Rotate Y",
       '#size' => 6,
       '#maxlength' => 26,
-      '#default_value' => isset($trigger['rotate_y']) ? $trigger['rotate_y'] : $settings['config']['rotate_y'],
+      '#default_value' => isset($trigger['rotate_y']) ? $trigger['rotate_y'] : '',
     );
     $options['triggers_fieldset']["trigger$i"]['rotate_z'] = array(
       '#type' => 'textfield',
       '#title' => "Rotate Z",
       '#size' => 6,
       '#maxlength' => 26,
-      '#default_value' => isset($trigger['rotate_z']) ? $trigger['rotate_z'] : $settings['config']['rotate_z'],
+      '#default_value' => isset($trigger['rotate_z']) ? $trigger['rotate_z'] : '',
     );
     $options['triggers_fieldset']["trigger$i"]['opacity'] = array(
       '#type' => 'textfield',
@@ -328,7 +329,7 @@ function scrollreveal_admin($form, &$form_state) {
       '#description' => 'Starting opacity value, before transitioning to the computed opacity.',
       '#size' => 6,
       '#maxlength' => 4,
-      '#default_value' => isset($trigger['opacity']) ? $trigger['opacity'] : $settings['config']['opacity'],
+      '#default_value' => isset($trigger['opacity']) ? $trigger['opacity'] : '',
     );
     $options['triggers_fieldset']["trigger$i"]['scale'] = array(
       '#type' => 'textfield',
@@ -336,7 +337,7 @@ function scrollreveal_admin($form, &$form_state) {
       '#description' => 'Starting scale value, will transition from this value to 1.',
       '#size' => 6,
       '#maxlength' => 4,
-      '#default_value' => isset($trigger['scale']) ? $trigger['scale'] : $settings['config']['scale'],
+      '#default_value' => isset($trigger['scale']) ? $trigger['scale'] : '',
     );
     $options['triggers_fieldset']["trigger$i"]['easing'] = array(
       '#type' => 'select',
@@ -347,7 +348,8 @@ function scrollreveal_admin($form, &$form_state) {
         'ease-out' => t('Ease Out'),
         'ease-in-out' => t('Ease In Out'),
       ),
-      '#default_value' => isset($trigger['easing']) ? $trigger['easing'] : $settings['config']['easing'],
+      '#empty_option' => t('- Default -'),
+      '#default_value' => isset($trigger['easing']) ? $trigger['easing'] : '',
     );
   $options['triggers_fieldset']["trigger$i"]['mobile'] = array(
     '#type' => 'select',
@@ -357,7 +359,8 @@ function scrollreveal_admin($form, &$form_state) {
       'false' => t('False'),
       'true' => t('True'),
     ),
-    '#default_value' => isset($trigger['mobile']) ? $trigger['mobile'] : $settings['config']['mobile'],
+    '#empty_option' => t('- Default -'),
+    '#default_value' => isset($trigger['mobile']) ? $trigger['mobile'] : '',
   );
     $options['triggers_fieldset']["trigger$i"]['reset'] = array(
       '#type' => 'select',
@@ -367,7 +370,8 @@ function scrollreveal_admin($form, &$form_state) {
         'false' => t('False'),
         'true' => t('True'),
       ),
-      '#default_value' => isset($trigger['reset']) ? $trigger['reset'] : $settings['config']['reset'],
+      '#empty_option' => t('- Default -'),
+      '#default_value' => isset($trigger['reset']) ? $trigger['reset'] : '',
     );
     $options['triggers_fieldset']["trigger$i"]['useDelay'] = array(
       '#type' => 'select',
@@ -377,7 +381,8 @@ function scrollreveal_admin($form, &$form_state) {
         'once' => t('Once - delay only the first time reveals occur'),
         'onload' => t('Onload - delay only for animations triggered by first load'),
       ),
-      '#default_value' => isset($trigger['useDelay']) ? $trigger['useDelay'] : $settings['config']['useDelay'],
+      '#empty_option' => t('- Default -'),
+      '#default_value' => isset($trigger['useDelay']) ? $trigger['useDelay'] : '',
     );
     $options['triggers_fieldset']["trigger$i"]['viewFactor'] = array(
       '#type' => 'textfield',
@@ -385,10 +390,10 @@ function scrollreveal_admin($form, &$form_state) {
       '#description' => t("When should an element be considered in the viewport? The default value of 0.20 means 20% of an element must be visible for its reveal to occur."),
       '#size' => 6,
       '#maxlength' => 4,
-      '#default_value' => isset($trigger['viewFactor']) ? $trigger['viewFactor'] : $settings['config']['viewFactor'],
+      '#default_value' => isset($trigger['viewFactor']) ? $trigger['viewFactor'] : '',
     );
     $options['triggers_fieldset']["trigger$i"]['delete'] = array(
-      '#type' => 'button', 
+      '#type' => 'button',
       '#value' => t('Delete element'),
       '#name' => 'delete-' . $i,
       '#submit' => array('scrollreveal_delete_submit'),
@@ -405,7 +410,7 @@ function scrollreveal_admin($form, &$form_state) {
   );
   $options['triggers_fieldset']["trigger$i"]['element'] = array(
     '#type' => 'textfield',
-    '#default_value' => NULL,
+    '#default_value' => '',
     '#title' => "Valid jQuery selector",
     '#description' => "A jQuery selector to identify the element(s) that will appear with the Scroll Reveal. For example for a list of items in a view you could use #block-views-services-block .views-row.",
     '#required' => FALSE,
@@ -413,32 +418,33 @@ function scrollreveal_admin($form, &$form_state) {
   $options['triggers_fieldset']["trigger$i"]['origin'] = array(
     '#type' => 'select',
     '#title' => "Origin",
-    '#default_value' => $settings['config']['origin'],
+    '#default_value' => '',
     '#options' => array(
       'top' => t('Top'),
       'bottom' => t('Bottom'),
       'right' => t('Right'),
       'left' => t('Left'),
     ),
+    '#empty_option' => t('- Default -'),
   );
   $options['triggers_fieldset']["trigger$i"]['distance'] = array(
     '#type' => 'textfield',
     '#title' => "Distance (in pixels)",
-    '#default_value' => $settings['config']['distance'],
+    '#default_value' => '',
     '#size' => 6,
     '#maxlength' => 4,
   );
   $options['triggers_fieldset']["trigger$i"]['duration'] = array(
     '#type' => 'textfield',
     '#title' => "Duration (in ms)",
-    '#default_value' => $settings['config']['duration'],
+    '#default_value' => '',
     '#size' => 6,
     '#maxlength' => 4,
   );
   $options['triggers_fieldset']["trigger$i"]['delay'] = array(
     '#type' => 'textfield',
     '#title' => "Delay (in ms)",
-    '#default_value' => $settings['config']['delay'],
+    '#default_value' => '',
     '#size' => 6,
     '#maxlength' => 4,
   );
@@ -448,7 +454,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => 'The interval is the time until the next element in the sequence begins its reveal, which is separate from the time until the element’s animation completes.',
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => $settings['config']['interval'],
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['rotate_x'] = array(
     '#type' => 'textfield',
@@ -456,21 +462,21 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => 'Starting angles in degrees, will transition from these values to 0 in all axes.',
     '#size' => 6,
     '#maxlength' => 3,
-    '#default_value' => $settings['config']['rotate_x'],
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['rotate_y'] = array(
     '#type' => 'textfield',
     '#title' => "Rotate Y",
     '#size' => 6,
     '#maxlength' => 3,
-    '#default_value' => $settings['config']['rotate_y'],
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['rotate_z'] = array(
     '#type' => 'textfield',
     '#title' => "Rotate Z",
     '#size' => 6,
     '#maxlength' => 3,
-    '#default_value' => $settings['config']['rotate_z'],
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['opacity'] = array(
     '#type' => 'textfield',
@@ -478,7 +484,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => 'Starting opacity value, before transitioning to the computed opacity.',
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => $settings['config']['opacity'],
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['scale'] = array(
     '#type' => 'textfield',
@@ -486,7 +492,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => 'Starting scale value, will transition from this value to 1.',
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => $settings['config']['scale'],
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['easing'] = array(
     '#type' => 'select',
@@ -497,7 +503,8 @@ function scrollreveal_admin($form, &$form_state) {
       'ease-out' => t('Ease Out'),
       'ease-in-out' => t('Ease In Out'),
     ),
-    '#default_value' => $settings['config']['easing'],
+    '#empty_option' => t('- Default -'),
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['mobile'] = array(
     '#type' => 'select',
@@ -507,7 +514,8 @@ function scrollreveal_admin($form, &$form_state) {
       'false' => t('False'),
       'true' => t('True'),
     ),
-    '#default_value' => $settings['config']['mobile'],
+    '#empty_option' => t('- Default -'),
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['reset'] = array(
     '#type' => 'select',
@@ -517,7 +525,8 @@ function scrollreveal_admin($form, &$form_state) {
       'false' => t('False'),
       'true' => t('True'),
     ),
-    '#default_value' => $settings['config']['reset'],
+    '#empty_option' => t('- Default -'),
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['useDelay'] = array(
     '#type' => 'select',
@@ -527,7 +536,8 @@ function scrollreveal_admin($form, &$form_state) {
       'once' => t('Once - delay only the first time reveals occur'),
       'onload' => t('Onload - delay only for animations triggered by first load'),
     ),
-    '#default_value' => $settings['config']['useDelay'],
+    '#empty_option' => t('- Default -'),
+    '#default_value' => '',
   );
   $options['triggers_fieldset']["trigger$i"]['viewFactor'] = array(
     '#type' => 'textfield',
@@ -535,7 +545,7 @@ function scrollreveal_admin($form, &$form_state) {
     '#description' => t("When should an element be considered in the viewport? The default value of 0.20 means 20% of an element must be visible for its reveal to occur."),
     '#size' => 6,
     '#maxlength' => 4,
-    '#default_value' => $settings['config']['viewFactor'],
+    '#default_value' => '',
   );
   $options['pages'] = array(
     '#type' => 'fieldset',
@@ -619,7 +629,7 @@ function scrollreveal_admin_validate($form, &$form_state) {
     config_set('scrollreveal.settings', 'scrollreveal_settings', $settings);
     $form_state['rebuild'] = TRUE;
     $form_state['flag'] = 1;
-    backdrop_set_message(t('The element have been deleted.'));
+    backdrop_set_message(t('The element has been deleted.'));
     backdrop_goto('admin/config/user-interface/scrollreveal');
   }
 }
