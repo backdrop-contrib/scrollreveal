@@ -1,41 +1,26 @@
 <?php
-
 /**
- * @file scrollreveal.install
- * Installation and update functions for the ScrollReveal
- * Module
+ * @file
+ * Install, update, and uninstall functions for the Scroll Reveal module.
  */
 
-
 /**
- * Implementation of hook_install().
- * This will add the current theme to config.
+ * Implements hook_install().
  */
 function scrollreveal_install() {
+  // Add the current theme to config.
   $theme = config_get('system.core', 'theme_default');
   config_set('scrollreveal.settings', 'scrollreveal_settings.theme.themes', array($theme => $theme));
 }
 
-
-
 /**
- * Implementation of hook_uninstall().
- * Only clears our variables, so a fresh installation can repopulate them.
- */
-function scrollreveal_uninstall() {
-  // Settings.
-  variable_del('scrollreveal_settings');
-}
-
-/**
- * Implementation of hook_update().
+ * Update variables to config.
  */
 function scrollreveal_update_1000() {
-  $config = config('scrollreveal.settings');
+  // Update config.
+  config_set('scrollreveal.settings', 'scrollreveal_settings', update_variable_get('scrollreveal_settings'));
 
-  $config->set('scrollreveal_settings', update_variable_get('scrollreveal_settings'));
-  $config->save();
-
-  // Delete variables.
+  // Delete variable.
   update_variable_del('scrollreveal_settings');
 }
+
