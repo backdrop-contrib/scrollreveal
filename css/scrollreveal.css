@@ -1,11 +1,19 @@
-.scrollreveal-admin .fieldset-wrapper .form-item {
-  padding: 1rem 0 0.25rem 0;
-  border-top: 1px solid rgba(120, 120, 120, 0.1); }
-  .scrollreveal-admin .fieldset-wrapper .form-item input, .scrollreveal-admin .fieldset-wrapper .form-item label {
-    display: inline-block;
-    vertical-align: top; }
-  .scrollreveal-admin .fieldset-wrapper .form-item label {
-    width: 20%; }
-  .scrollreveal-admin .fieldset-wrapper .form-item .description {
-    color: #777;
-    margin-left: 20%; }
+.scrollreveal-admin .fieldset-wrapper .form-item label {
+  display: inline-block;
+  vertical-align: top;
+  width: 20%;
+}
+.scrollreveal-admin .fieldset-wrapper .form-item .description {
+  margin-left: 20%;
+}
+.scrollreveal-admin .fieldset-wrapper .form-item.form-type-textarea .description {
+  margin-left: 0;
+}
+.scrollreveal-admin .fieldset-wrapper .form-item.form-item-scrollreveal-settings-theme-themes label {
+  display: block;
+  width: auto;
+}
+.scrollreveal-admin .fieldset-wrapper .form-item.form-item-scrollreveal-settings-theme-themes .description {
+  margin-left: 0;
+}
+

@@ -1,29 +1,27 @@
 {
     "_config_name": "scrollreveal.settings",
-    "scrollreveal_settings": {
-        "config": {
-            "origin": "top",
-            "distance": 24,
-            "duration": 500,
-            "delay": 0,
-            "interval": 0,
-            "rotate_x": 0,
-            "rotate_y": 0,
-            "rotate_z": 0,
-            "opacity": 0,
-            "scale": 0.9,
-            "easing": "ease",
-            "mobile": "true",
-            "reset": "false",
-            "useDelay": "always",
-            "viewportFactor": 0.2,
-        },
-        "pages": {
-            "visibility": 0,
-            "pages": "admin/*"
-        },
-        "theme": {
-            "visibility": 1
-        }
+    "config": {
+        "origin": "top",
+        "distance": 24,
+        "duration": 500,
+        "delay": 0,
+        "interval": 0,
+        "rotate_x": 0,
+        "rotate_y": 0,
+        "rotate_z": 0,
+        "opacity": 0,
+        "scale": 0.9,
+        "easing": "ease",
+        "mobile": "true",
+        "reset": "false",
+        "useDelay": "always",
+        "viewportFactor": 0.2,
+    },
+    "pages": {
+        "visibility": 0,
+        "pages": "admin/*"
+    },
+    "theme": {
+        "visibility": 1
     }
 }

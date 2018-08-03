@@ -40,7 +40,7 @@ function scrollreveal_library_info() {
  */
 function scrollreveal_init() {
   $module_path = backdrop_get_path('module', 'scrollreveal');
-  $settings = config_get('scrollreveal.settings', 'scrollreveal_settings');
+  $settings = config_get('scrollreveal.settings');
 
   // Check if the library should be loaded on the current path and theme.
   $path = scrollreveal_check_path($settings['pages']['visibility'], $settings['pages']['pages']);

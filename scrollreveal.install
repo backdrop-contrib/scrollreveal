@@ -10,7 +10,7 @@
 function scrollreveal_install() {
   // Add the current theme to config.
   $theme = config_get('system.core', 'theme_default');
-  config_set('scrollreveal.settings', 'scrollreveal_settings.theme.themes', array($theme => $theme));
+  config_set('scrollreveal.settings', 'theme.themes', array($theme => $theme));
 }
 
 /**
@@ -18,7 +18,12 @@ function scrollreveal_install() {
  */
 function scrollreveal_update_1000() {
   // Update config.
-  config_set('scrollreveal.settings', 'scrollreveal_settings', update_variable_get('scrollreveal_settings'));
+  $config = config('scrollreveal.settings');
+  $variables = update_variable_get('scrollreveal_settings');
+  foreach ($variables as $key => $value) {
+    $config->set($key, $value);
+  }
+  $config->save();
 
   // Delete variable.
   update_variable_del('scrollreveal_settings');
