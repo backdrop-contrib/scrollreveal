@@ -50,12 +50,30 @@ function scrollreveal_init() {
     // Add library files.
     backdrop_add_library('scrollreveal', 'scrollreveal');
 
+    // Prepare JS settings.
+    $js_settings = array();
+    foreach ($settings['triggers_fieldset'] as $trigger) {
+      foreach ($trigger as $key => $value) {
+        // Populate empty values from defaults.
+        if ($value == '') {
+          $value = $settings['config'][$key];
+        }
+
+        // Remove values that are still empty in order to use library defaults.
+        if ($value == '') {
+          unset($trigger[$key]);
+        }
+      }
+
+      $js_settings[] = $trigger;
+    }
+
     // Add custom JS.
     backdrop_add_js($module_path . '/js/scrollreveal.custom.js', array(
       'scope' => 'footer',
       'weight' => 5,
     ));
-    backdrop_add_js(array('scrollreveal' => $settings), 'setting');
+    backdrop_add_js(array('scrollreveal' => $js_settings), 'setting');
   }
 }
 

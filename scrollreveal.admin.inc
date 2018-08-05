@@ -244,7 +244,7 @@ function scrollreveal_add_form_elements(&$form, $defaults = '', $isset = FALSE, 
   );
   $options['rotate_z'] = array(
     '#type' => 'number',
-    '#title' => t('Rotate Z'),
+    '#title' => t('Rotate z'),
     '#description' => t("Starting angle; will transition from this value to 0 on the z axis."),
     '#min' => -360,
     '#max' => 360,
@@ -262,8 +262,8 @@ function scrollreveal_add_form_elements(&$form, $defaults = '', $isset = FALSE, 
     '#type' => 'number',
     '#title' => t('Scale'),
     '#description' => t("Starting scale value; will transition from this value to 1."),
-    '#min' => 0,
-    '#max' => 1,
+    '#min' => 0.01,
+    '#max' => 99.99,
     '#step' => 0.01,
   );
   $options['easing'] = array(
