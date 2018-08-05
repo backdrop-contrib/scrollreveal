@@ -38,8 +38,8 @@
           config.scale = parseFloat(trigger.scale);
         };
         config.easing = trigger.easing;
-        config.mobile = trigger.mobile;
-        config.reset = trigger.reset;
+        config.mobile = Boolean(trigger.mobile);
+        config.reset = Boolean(trigger.reset);
         config.useDelay = trigger.useDelay;
         if (trigger.viewFactor) {
           config.viewFactor = parseFloat(trigger.viewFactor);

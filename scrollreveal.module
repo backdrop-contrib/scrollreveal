@@ -53,10 +53,18 @@ function scrollreveal_init() {
     // Prepare JS settings.
     $js_settings = array();
     foreach ($settings['triggers_fieldset'] as $trigger) {
-      foreach ($trigger as $key => $value) {
+      foreach ($trigger as $key => &$value) {
         // Populate empty values from defaults.
         if ($value == '') {
           $value = $settings['config'][$key];
+        }
+
+        // Fix booleans.
+        if ($value === 'true') {
+          $value = TRUE;
+        }
+        elseif ($value === 'false') {
+          $value = FALSE;
         }
 
         // Remove values that are still empty in order to use library defaults.
