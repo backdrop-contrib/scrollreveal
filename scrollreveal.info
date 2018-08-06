@@ -1,6 +1,6 @@
 name = Scroll Reveal
-description = Create a Scroll Reveal effects on any tagged element.
-version = 1.x-1.1
+description = Create a Scroll Reveal effect on any tagged element.
 backdrop = 1.x
 type = module
 configure = admin/config/user-interface/scrollreveal
+
