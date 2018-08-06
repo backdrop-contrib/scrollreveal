@@ -32,6 +32,7 @@ https://github.com/backdrop-contrib/foo-project/issues.
 Current Maintainers
 -------------------
 
+- Peter Anderson (https://github.com/bwpanda).
 - Laryn Kragt Bakker (https://github.com/laryn) - [CEDC.org](https://cedc.org).
 
 Credits
