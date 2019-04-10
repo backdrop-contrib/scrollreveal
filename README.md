@@ -1,10 +1,6 @@
 Scroll Reveal
 =============
 
-![ScrollReveal — Easy scroll animations for web and mobile browsers.](https://scrollrevealjs.org/assets/scrollreveal-repo-header.png)
-
-![ScrollReveal Demo](https://scrollrevealjs.org/assets/scrollreveal-demo.png)
-
 A simple way to create and maintain how elements fade in, triggered when they
 enter the viewport. This module bundles and uses the
 [ScrollReveal](https://github.com/jlmakes/scrollreveal) plugin from
