@@ -15,7 +15,7 @@
         "mobile": "true",
         "reset": "false",
         "useDelay": "always",
-        "viewportFactor": 0.2,
+        "viewFactor": 0.2
     },
     "pages": {
         "visibility": 0,
